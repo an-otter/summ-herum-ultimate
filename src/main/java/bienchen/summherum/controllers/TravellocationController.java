@@ -20,5 +20,17 @@ public class TravellocationController {
         return travellocationRepository.findById(1L).orElseThrow();
     }
 
-    // Hier können wir gleich dein @PostMapping hinzufügen!
+
+     // Braucht Name, Breiten- und Längengrad mit der Syntax zB 13.55657
+    @PostMapping("/createLocation")
+    public Travellocation createLocation(@RequestParam String name,
+                                         @RequestParam Double latitude,
+                                         @RequestParam Double longitude) {
+
+            Travellocation newLocation = new Travellocation();
+        newLocation.setName(name);
+        newLocation.setLatitude(latitude);
+        newLocation.setLongitude(longitude);
+        return travellocationRepository.save(newLocation);
+    }
 }

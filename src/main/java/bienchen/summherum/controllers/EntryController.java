@@ -1,13 +1,18 @@
 package bienchen.summherum.controllers;
 
 import bienchen.summherum.entities.Entry;
+import bienchen.summherum.entities.Journey;
+import bienchen.summherum.entities.Travellocation;
 import bienchen.summherum.repositories.EntryRepository;
+import bienchen.summherum.repositories.JourneyRepository;
+import bienchen.summherum.repositories.TravellocationRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import java.time.Instant;
 
 @RestController
 public class EntryController {
