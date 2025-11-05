@@ -25,10 +25,7 @@ public class JourneyController {
         return journeyRepository.findById(1L).orElseThrow();
     }
 
-    /* Erstellt eine neue Reise.
-            * Braucht Titel, Beschreibung, Daten und die ID des Users,
-            * dem die Reise gehört.
-            */
+    // Braucht Titel, Beschreibung, Daten und die ID des Users, dem die Reise gehört.
     @PostMapping("/createJourney")
     public Journey createJourney(@RequestParam String title,
                                  @RequestParam String description,
