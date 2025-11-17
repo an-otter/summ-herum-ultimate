@@ -23,4 +23,6 @@ public class Travellocation {
     @Column(name = "LONGITUDE")
     private Double longitude;
 
+    @Column(name = "IMAGE_URL")
+    private String imageUrl;
 }

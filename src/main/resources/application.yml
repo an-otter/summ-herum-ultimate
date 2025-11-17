@@ -1,6 +1,6 @@
 
 server:
-  port: 8081 # Dein gewünschter Port
+  port: 8081
 
 spring:
   application:
@@ -19,3 +19,10 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
+
+    hibernate:
+      ddl-auto: update
+
+api:
+  pexels:
+    key: k02NsKSTJEfjGqKpk6J9aeGff0LTAkuJ962e3g6EgAqrJTM52xBj9yBr
