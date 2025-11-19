@@ -10,33 +10,14 @@
 <p>Bist du viel otterwegs? 🦦 Dann halte hier deine Erinnerungen fest! 🌞</p>
 <hr>
 
-<h2>Gespeicherte Orte 🐝</h2>
-
-<div th:each="ort : ${orteListe}" style="border: 1px solid black; margin: 10px; padding: 10px;">
-
-    <h3 th:text="${ort.name}">Ort-Platzhalter (wird ersetzt)</h3>
-
-    <p>
-        Koordinaten 🌐
-        <span th:text="${ort.latitude}"></span>,
-        <span th:text="${ort.longitude}"></span>
-    </p>
-
-    <img
-            th:if="${ort.imageUrl != null}"
-            th:src="${ort.imageUrl}"
-            alt="Foto des Ortes"
-            style="max-width: 300px; height: auto;"
-    />
-    <p th:if="${ort.imageUrl == null}">(Für diesen Ort wurde kein Foto gefunden 🦖)</p>
-</div>
+<div th:replace="~{menu :: navbar}"></div>
 
 <hr>
 <h4>...bee happy!</h4>
 <div style="text-align: left; margin-bottom: 20px;">
     <img src="https://images.thalia.media/00/-/4236f8eac73d4101ad25056af22bdb4d/legami-pluesch-super-soft-biene-legami.jpeg"
          alt="Mein Lieblingsbienchen"
-         style="width: 120px; height: auto;"> </div>
+         style="width: 200px; height: auto;"> </div>
 <hr>
 </body>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gespeicherte Orte</title>
+</head>
+<body style="font-family: sans-serif;">
+
+<div th:replace="~{menu :: navbar}"></div>
+
+<h1>Gespeicherte Orte 🐝</h1>
+
+<div th:each="ort : ${orteListe}" style="border: 1px solid black; margin: 10px; padding: 10px;">
+
+    <h3 th:text="${ort.name}">Ort-Platzhalter (wird ersetzt)</h3>
+
+    <p>
+        Koordinaten 🌐
+        <span th:text="${ort.latitude}"></span>,
+        <span th:text="${ort.longitude}"></span>
+    </p>
+
+    <img
+            th:if="${ort.imageUrl != null}"
+            th:src="${ort.imageUrl}"
+            alt="Foto des Ortes"
+            style="max-width: 300px; height: auto;"
+    />
+    <p th:if="${ort.imageUrl == null}">(Für diesen Ort wurde kein Foto gefunden 🦖)</p>
+</div>
+</body>
+</html>

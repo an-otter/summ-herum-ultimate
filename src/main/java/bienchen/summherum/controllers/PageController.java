@@ -13,24 +13,10 @@ public class PageController {
     @Autowired
     private TravellocationRepository travellocationRepository;
 
-    /**
-     * Diese Methode wird aufgerufen, wenn jemand http://localhost:8081/
-     * im Browser eingibt.
-     */
-    @GetMapping("/")
-    public String showHomePage(Model model) {
-
-        // 1. Hole ALLE Orte aus der Datenbank
+    @GetMapping("/showlocations")
+    public String showLocationsPage(Model model) {
         Iterable<Travellocation> alleOrte = travellocationRepository.findAll();
-
-        // 2. Packe diese Liste in einen "Korb" (das Model),
-        //    damit die HTML-Seite sie lesen kann.
-        //    Wir nennen die Liste im Korb "orteListe".
         model.addAttribute("orteListe", alleOrte);
-
-        // 3. Gib den NAMEN der HTML-Datei zurück.
-        // Spring sucht jetzt automatisch nach:
-        // /src/main/resources/templates/index.html
-        return "index";
+        return "showlocations";
     }
 }
