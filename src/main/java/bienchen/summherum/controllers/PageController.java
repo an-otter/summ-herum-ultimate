@@ -4,6 +4,7 @@ import bienchen.summherum.datatransferobjects.NominatimMapResponse;
 import bienchen.summherum.datatransferobjects.PexelsResponse;
 import bienchen.summherum.entities.Travellocation;
 import bienchen.summherum.entities.User;
+import bienchen.summherum.repositories.JourneyRepository;
 import bienchen.summherum.repositories.TravellocationRepository;
 import bienchen.summherum.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,8 @@ public class PageController {
     // 1. REPOSITORIES & TOOLS
     // ==========================================
     @Autowired private TravellocationRepository travellocationRepository;
-    @Autowired private UserRepository userRepository; // <-- NEU: Für die User
+    @Autowired private UserRepository userRepository;
+    @Autowired private JourneyRepository journeyRepository;
 
     @Value("${api.pexels.key}") private String pexelsApiKey;
     private final WebClient webClient = WebClient.builder().build();
@@ -67,13 +69,13 @@ public class PageController {
         return "redirect:/users";
     }
 
-    // --- Ort speichern (Deine komplexe Logik) ---
+    // --- Ort speichern ---
     @PostMapping("/saveLocation")
     public String saveLocationFromForm(@RequestParam Double latitude, @RequestParam Double longitude) {
         String nominatimUrl = String.format(Locale.US, "https://nominatim.openstreetmap.org/reverse?format=json&lat=%f&lon=%f", latitude, longitude);
 
         webClient.get().uri(nominatimUrl)
-                .header("User-Agent", "SummherumApp/1.0 (deine.email@beispiel.com)")
+                .header("User-Agent", "SummherumApp/1.0 (heike.ademmer@th-brandenburg.de)")
                 .retrieve().bodyToMono(NominatimMapResponse.class)
                 .flatMap(res -> {
                     String name = res.getDisplayName();
@@ -90,9 +92,42 @@ public class PageController {
         return "redirect:/showlocations";
     }
 
+    // --- REISEN (Journeys) ---
+
+    // 1. Seite anzeigen
+    @GetMapping("/journeys")
+    public String showJourneysPage(Model model) {
+        model.addAttribute("journeyListe", journeyRepository.findAll());
+        // WICHTIG: Wir brauchen die User für das Dropdown-Menü!
+        model.addAttribute("usersListe", userRepository.findAll());
+        return "journeys";
+    }
+
+    // 2. Reise speichern
+    @PostMapping("/saveJourney")
+    public String saveJourney(@RequestParam String title,
+                              @RequestParam String description,
+                              @RequestParam java.time.LocalDate startdate,
+                              @RequestParam java.time.LocalDate enddate,
+                              @RequestParam Long userId) {
+
+        // Finde den User, der ausgewählt wurde
+        User user = userRepository.findById(userId).orElseThrow();
+
+        // Erstelle die Reise
+        bienchen.summherum.entities.Journey newJourney = new bienchen.summherum.entities.Journey();
+        newJourney.setTitle(title);
+        newJourney.setDescription(description);
+        newJourney.setStartdate(startdate);
+        newJourney.setEnddate(enddate);
+        newJourney.setUser(user); // Verknüpfung setzen!
+
+        journeyRepository.save(newJourney);
+        return "redirect:/journeys";
+    }
 
     // ==========================================
-    // 4. HILFSMETHODEN (Private)
+    // 4. HILFSMETHODEN
     // ==========================================
     private Mono<String> findLocationPhoto(String queryName) {
         return webClient.get()
