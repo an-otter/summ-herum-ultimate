@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<nav th:fragment="navbar" style="background-color: #333; padding: 15px; margin-bottom: 20px;">
+
+    <style>
+        .menu-link {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+            font-family: sans-serif;
+            font-size: 18px;
+        }
+        .menu-link:hover {
+            color: #ffd700;
+        }
+    </style>
+
+    <a class="menu-link" href="/">🏠 Home</a>
+    <a class="menu-link" href="/journeys">✈️ Reisen hinzufügen</a>
+    <a class="menu-link" href="/entries">📖 Einträge schreiben</a>
+    <a class="menu-link" href="/timeline">⏳ Zeitstrahl</a>
+    <a class="menu-link" href="/locations">🌍 neuer Ort</a>
+    <a class="menu-link" href="/showlocations">🗂️ gespeicherte Orte</a>
+    <a class="menu-link" href="/packinglists">🎒 Packlisten</a>
+    <a class="menu-link" href="/users">👥 User</a>
+
+    <span th:if="${session.loggedInUser == null}">
+            <a class="menu-link" href="/login" style="color: #4CAF50;">🔐 Login</a>
+        </span>
+
+    <span th:if="${session.loggedInUser != null}">
+            <span style="color: white; margin-right: 10px;">
+                Hallo, <strong th:text="${session.loggedInUser.username}">Biene</strong>! 👋
+            </span>
+            <a class="menu-link" href="/logout" style="color: #f44336; font-size: 0.8em;">(Logout)</a>
+    </span>
+
+</nav>
+
+</body>
+</html>

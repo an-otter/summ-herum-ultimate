@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+</head>
+<body style="font-family: sans-serif; text-align: center; margin-top: 50px;">
+
+<div th:replace="~{menu :: navbar}"></div>
+
+<div style="width: 300px; margin: 0 auto; background-color: #f9f9f9; padding: 30px; border-radius: 10px; border: 1px solid #ddd;">
+    <h2>🔐 Login</h2>
+
+    <div th:if="${error}" style="color: red; margin-bottom: 10px;">
+        Falscher Name oder Passwort!
+    </div>
+
+    <form th:action="@{/performLogin}" method="post">
+
+        <label>Wer bist du?</label><br>
+        <input type="text" name="username" required placeholder="Name" style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
+
+        <label>Passwort:</label><br>
+        <input type="password" name="password" required placeholder="Passwort" style="width: 100%; padding: 8px; margin-bottom: 20px;"><br>
+
+        <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer; width: 100%;">
+            Einloggen 🚀
+        </button>
+    </form>
+
+    <p style="font-size: 0.8em; margin-top: 20px;">
+        Noch kein User? <a href="/users">Hier registrieren</a>
+    </p>
+</div>
+
+</body>
+</html>

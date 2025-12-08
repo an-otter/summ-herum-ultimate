@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Neuen Ort anlegen</title>
+</head>
+<body style="font-family: sans-serif;">
+
+<div th:replace="~{menu :: navbar}"></div>
+
+<div style="max-width: 600px; margin: 0 auto; text-align: center;">
+
+    <h1>🌍 Einen neuen Ort entdecken</h1>
+    <p>Gib die Koordinaten ein, wir finden den Namen und ein Foto automatisch!</p>
+
+    <div style="background-color: #f0f0f0; padding: 30px; border-radius: 10px; margin-top: 20px;">
+        <form th:action="@{/saveLocation}" method="post">
+
+            <label><strong>Breitengrad (Latitude):</strong></label><br>
+            <input type="number" step="any" name="latitude" required placeholder="z.B. 52.5200" style="padding: 8px; width: 200px; margin: 5px;"><br><br>
+
+            <label><strong>Längengrad (Longitude):</strong></label><br>
+            <input type="number" step="any" name="longitude" required placeholder="z.B. 13.4050" style="padding: 8px; width: 200px; margin: 5px;"><br><br>
+
+            <button type="submit" style="background-color: #4CAF50; color: white; padding: 12px 25px; border: none; cursor: pointer; font-size: 16px;">
+                Ort speichern ✨
+            </button>
+        </form>
+    </div>
+
+    <br>
+    <a href="/showlocations">➡ Zu meinen gespeicherten Orten</a>
+
+</div>
+
+</body>
+</html>

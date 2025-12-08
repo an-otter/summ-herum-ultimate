@@ -38,4 +38,7 @@ public class Entry {
     @JoinColumn(name = "LOCATION_ID")
     private Travellocation location;
 
+    // --- NEU: Wetter-Snapshot ---
+    @Column(name = "WEATHER")
+    private String weather; // Hier speichern wir z.B. "22.5°C"
 }

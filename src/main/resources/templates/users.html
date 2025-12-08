@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Verwaltung</title>
+</head>
+<body style="font-family: sans-serif;">
+
+<div th:replace="~{menu :: navbar}"></div>
+
+<div style="max-width: 800px; margin: 0 auto;">
+
+    <h1>👥 Unsere Nutzer 🙂 </h1>
+
+    <div style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+        <h3>Neuen User anlegen 🙋‍♀️ </h3>
+         <form th:action="@{/saveUser}" method="post">
+            <label>Username:</label>
+            <input type="text" name="username" required placeholder="z.B. BieneMaja" style="padding: 5px;">
+
+            <label style="margin-left: 10px;">Passwort:</label>
+            <input type="password" name="password" required placeholder="Geheim!" style="padding: 5px;">
+
+            <button type="submit" style="background-color: #2196F3; color: white; border: none; padding: 6px 15px; cursor: pointer; margin-left: 10px;">
+                Speichern 💾
+            </button>
+        </form>
+    </div>
+
+    <hr>
+
+    <h3>Bereits registriert:</h3>
+
+    <ul style="list-style-type: none; padding: 0;">
+        <li th:each="user : ${usersListe}"
+            style="background-color: #f9f9f9; border: 1px solid #ddd; margin: 5px 0; padding: 10px; border-radius: 5px;">
+
+            👤 <strong th:text="${user.username}">Platzhalter</strong>
+
+            <span style="color: gray; font-size: 0.8em;">(ID: <span th:text="${user.id}"></span>)</span>
+        </li>
+    </ul>
+
+</div>
+
+</body>
+</html>

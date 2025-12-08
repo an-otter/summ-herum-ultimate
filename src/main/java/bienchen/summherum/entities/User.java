@@ -21,6 +21,9 @@ public class User {
     @Column(name = "USERNAME")
     private String username;
 
+    // --- NEU: Passwort ---
+    private String password;
+
     @JsonIgnore // ist dafür da, um keine Endlosschleife in der PostMapping Anzeige zu kriegen, weil 2-Wege Beziehung
     @OneToMany(mappedBy = "user")
     private Set<Journey> journeys = new LinkedHashSet<>();
