@@ -19,27 +19,23 @@ public class SantaController {
     public String showGiftSack(@RequestParam(defaultValue = "A-1.08") String roomName,
                                Model model) {
 
-        // 1. STOPPUHR STARTEN ⏱️
-        // System.currentTimeMillis() = Aktuelle Zeit in Millisekunden
+        // Aktuelle Zeit messen
         long startTime = System.currentTimeMillis();
 
-        // 2. DATEN ABFRAGEN (Der kritische Moment) 🐌 vs 🐆
-        // Ohne Cache: Dauert 3 Sekunden.
-        // Mit Cache: Dauert 0 Millisekunden.
+        // Service aufrufen
         String gifts = santaService.getGiftsForRoom(roomName);
 
-        // 3. STOPPUHR STOPPEN 🏁
         long endTime = System.currentTimeMillis();
 
-        // 4. DAUER BERECHNEN
+        //  DAUER berechnen
         long duration = endTime - startTime;
 
-        // 5. Daten an das HTML schicken
+        // Daten an das HTML schicken
         model.addAttribute("roomName", roomName);
         model.addAttribute("gifts", gifts);
         model.addAttribute("duration", duration);
 
-        return "santa"; // Wir zeigen die Datei santa.html an
+        return "santa"; // zeigt Datei santa.html an
     }
 }
 
