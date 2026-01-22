@@ -3,13 +3,14 @@ package bienchen.summherum.datatransferobjects;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-// Schablone für die äußere Hülle
-@JsonIgnoreProperties(ignoreUnknown = true)
+// DTO für  Wetter-API
+@JsonIgnoreProperties(ignoreUnknown = true) // ignoriert überflüssige Daten
 public class MeteoResponse {
 
-    @JsonProperty("current_weather")
+    @JsonProperty("current_weather") // verbindet JSON-Feld mit Java-Variable
     private CurrentWeather currentWeather;
 
+    // Getter und Setter
     public CurrentWeather getCurrentWeather() {
         return currentWeather;
     }
@@ -18,12 +19,13 @@ public class MeteoResponse {
         this.currentWeather = currentWeather;
     }
 
-    // Schablone für das Innere
+    // statische Klasse bildet verschachtelte JSON-Struktur nach
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class CurrentWeather {
         private Double temperature;
-        private Integer weathercode;
+        private Integer weathercode; // Zahlencode wird später im Controller übersetzt
 
+        // Getter und Setter
         public Double getTemperature() {
             return temperature;
         }

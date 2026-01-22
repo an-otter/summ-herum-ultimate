@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController 
 public class HelloController {
 
+// das hier war meine Startseite, bevor alle weiteren Funktionen hinzukamen, um zu sehen ob die Konfigurationen korrekt funktionieren und es bei localhost geladen werden konnte
+// insbesondere als ich nachträglich in den Kurs kam, konnte ich so prüfen ob ich das Spring Boot Projekt erstmal richtig aufgesetzt hatte
     @GetMapping("start")
     public String sagHallo() {
         return """

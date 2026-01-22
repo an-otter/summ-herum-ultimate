@@ -3,14 +3,15 @@ package bienchen.summherum.datatransferobjects;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+// DTO für die OpenStreetMap Antwort
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NominatimMapResponse {
 
-    // Holt sich das Feld "display_name" aus dem JSON
+    // Holt sich gezielt nur den vollen Adress-String ("display_name") aus dem JSON, um später statt Koordinaten die Adresse anzuzeigen
     @JsonProperty("display_name")
     private String displayName;
 
-    // Standard-Getter und Setter
+    // Getter und Setter
     public String getDisplayName() {
         return displayName;
     }

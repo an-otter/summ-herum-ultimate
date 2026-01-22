@@ -3,26 +3,31 @@ package bienchen.summherum.datatransferobjects;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
-// Schablonen für Jackson/Json Parser
+// DTO für Pexels Bilder-API
+// JSON ist verschachtelt (Antwort -> Liste von Fotos -> Foto -> Quelle -> URL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PexelsResponse {
-    private List<PexelsPhoto> photos;
 
-    public List<PexelsPhoto> getPhotos() { return photos; }
-    public void setPhotos(List<PexelsPhoto> photos) { this.photos = photos; }
+    private List<Photo> photos; // API liefert ein Array an Suchergebnissen
 
+    public List<Photo> getPhotos() { return photos; }
+    public void setPhotos(List<Photo> photos) { this.photos = photos; }
+
+    // innere Klasse: Repräsentiert einzelnes Bild-Objekt in Array
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class PexelsPhoto {
-        private PexelsSrc src;
+    public static class Photo {
+        private Src src; // "src"-Objekt enthält verschiedenen Bildgrößen
 
-        public PexelsSrc getSrc() { return src; }
-        public void setSrc(PexelsSrc src) { this.src = src; }
+        public Src getSrc() { return src; }
+        public void setSrc(Src src) { this.src = src; }
     }
 
+    // weitere innere Klasse: tiefste Ebene, wo benötigte URL steht
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class PexelsSrc {
-        private String medium;
+    public static class Src {
+        private String medium; // nur URL für mittlere Bildgröße nehmen
 
+        // Getter und Setter
         public String getMedium() { return medium; }
         public void setMedium(String medium) { this.medium = medium; }
     }

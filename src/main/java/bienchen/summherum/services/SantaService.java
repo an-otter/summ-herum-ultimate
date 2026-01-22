@@ -6,11 +6,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class SantaService {
 
-      @Cacheable("wünsche")
+    // Demo vom Vortrag
+
+     @Cacheable("wünsche")
     public String getGiftsForRoom(String roomName) {
 
         try {
-            // SIMULATION: Die Datenbank ist langsam!
+            // Simulation: Die Datenbank ist langsam!
              Thread.sleep(3000);
 
          // fängt Fehler, damit's nicht abstürzt
