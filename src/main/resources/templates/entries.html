@@ -92,20 +92,14 @@
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <script>
-    // holt uns alle Einträge
+
+    // Entry hat in Datenbank keine direkte Spalte username. Aber: Ein Eintrag gehört zu einer Reise & User
+    // Daher Verfolgung, um User anzuzeigen: Eintrag ➡ Reise ➡ User ➡ Name
     const rawTexts = document.querySelectorAll('.raw-markdown');
     const targetDivs = document.querySelectorAll('.rendered-html');
-
-    // geht durch jeden Eintrag durch
-    for (let i = 0; i < rawTexts.length; i++) {
-        // Hole den Text (z.B. "**Hallo**")
-        const text = rawTexts[i].innerText;
-
-        // Wandelt ihn in HTML um (z.B. "<b>Hallo</b>")
-        // Die Funktion marked.parse() kommt aus der Bibliothek
-        const htmlContent = marked.parse(text);
-
-        // Steckt das HTML in das Anzeige-Div
+        for (let i = 0; i < rawTexts.length; i++) {
+            const text = rawTexts[i].innerText;
+         const htmlContent = marked.parse(text);
         targetDivs[i].innerHTML = htmlContent;
     }
 </script>
