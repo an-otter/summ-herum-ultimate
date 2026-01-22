@@ -18,7 +18,8 @@ Willkommen bei einer Spring Boot Webanwendung zur Verwaltung von Reisen, Orten, 
     Die Klasse `SummherumApplication.java` ausführen 
 5.  **Browser:**
      * Lokal: [http://localhost:8081/](http://localhost:8081/)
-    * Cloud: ([https://bienoccio.ambitioushill-1c45cb57.polandcentral.azurecontainerapps.io](https://bienoccio.ambitioushill-1c45cb57.polandcentral.azurecontainerapps.io))
+    * Cloud: [https://bienoccio.ambitioushill-1c45cb57.polandcentral.azurecontainerapps.io](https://bienoccio.ambitioushill-1c45cb57.polandcentral.azurecontainerapps.io)
+    * es kann sein, dass der Container eine längere Ladezeit hat
 
 ## ⚠️ kurzer Hinweis zur Konfiguration (API Keys)
 
