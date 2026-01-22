@@ -93,20 +93,20 @@
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <script>
-    // Wir holen uns alle Einträge
+    // holt uns alle Einträge
     const rawTexts = document.querySelectorAll('.raw-markdown');
     const targetDivs = document.querySelectorAll('.rendered-html');
 
-    // Wir gehen durch jeden Eintrag durch
+    // geht durch jeden Eintrag durch
     for (let i = 0; i < rawTexts.length; i++) {
         // Hole den Text (z.B. "**Hallo**")
         const text = rawTexts[i].innerText;
 
-        // Wandel ihn in HTML um (z.B. "<b>Hallo</b>")
-        // Die Funktion marked.parse() kommt aus der Bibliothek oben
+        // Wandelt ihn in HTML um (z.B. "<b>Hallo</b>")
+        // Die Funktion marked.parse() kommt aus der Bibliothek
         const htmlContent = marked.parse(text);
 
-        // Steck das HTML in das Anzeige-Div
+        // Steckt das HTML in das Anzeige-Div
         targetDivs[i].innerHTML = htmlContent;
     }
 </script>
@@ -114,7 +114,4 @@
 </body>
 </html>
 
-</div>
 
-</body>
-</html>

@@ -75,20 +75,20 @@
 
 <script>
     function loadSuggestion() {
-        // 1. Hole den Wert aus dem Jahreszeit-Feld
+        // Holt den Wert aus dem Jahreszeit-Feld
         const season = document.getElementById('seasonInput').value;
 
-        // Kleine Sicherheit: Wenn nichts drin steht, meckern
+        // Wenn nichts drin steht, meckern
         if (!season) {
             alert("Bitte gib erst eine Jahreszeit oder allgemeines Label ein");
             return;
         }
 
-        // 2. Ruf das Backend an (den Mini-Controller, den wir gebaut haben)
+        // Ruft das Backend auf (
         fetch('/api/packing-suggestion?season=' + season)
             .then(response => response.text()) // Wir wollen Text zurück
             .then(text => {
-                // 3. Steck den Text in das Inhalts-Feld
+                // Steckt den Text in das Inhalts-Feld
                 document.getElementById('itemsInput').value = text;
             })
             .catch(error => console.error('Fehler beim Zaubern:', error));
