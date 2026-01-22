@@ -1,6 +1,6 @@
 ## 🐝 Summherum - Projekt: Reiseplanung & Tagebuch
 
-Willkommen bei einer Spring Boot Webanwendung zur Verwaltung von Reisen, Orten, Packlisten und Tagebucheinträgen. Die App ist mehr als bloßes hineinschreiben, denn es integriert Wetterdaten und Bildersuche für ein interaktives Reiseerlebnis.
+Willkommen bei einer Spring Boot Webanwendung zur Verwaltung von Reisen, Orten, Packlisten und Tagebucheinträgen. Die App ist mehr als bloßes hineinschreiben, denn es integriert Wetterdaten, smarte Features und Bildersuche für ein interaktives Reiseerlebnis.
 
 ## 🚀 Highlights
 * **Reiseverwaltung:** Verknüpfung von Usern, Reisen und Orten
