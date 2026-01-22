@@ -19,7 +19,7 @@ Willkommen bei einer Spring Boot Webanwendung zur Verwaltung von Reisen, Orten, 
 5.  **Browser:**
      * Lokal: [http://localhost:8081/](http://localhost:8081/)
     * Cloud: [https://bienoccio.ambitioushill-1c45cb57.polandcentral.azurecontainerapps.io](https://bienoccio.ambitioushill-1c45cb57.polandcentral.azurecontainerapps.io)
-    * es kann sein, dass der Container eine längere Ladezeit hat, also bitte nicht vorzeitig abbrechen
+    * es kann sein, dass der Container eine längere Ladezeit hat, also bitte nicht vorzeitig abbrechen (wegen dem Cold-Start Phänomen natürlich)
     * die ideale Frontend User-Journey steht im E-Mail Anhang
 
 ## ⚠️ kurzer Hinweis zur Konfiguration (API Keys)
