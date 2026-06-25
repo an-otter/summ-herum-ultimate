@@ -84,6 +84,21 @@
             <span th:if="${entry.weather != null}">
                     🌡️ Wetter: <strong th:text="${entry.weather}">20°C</strong>
                 </span>
+
+                <br><br>
+
+                    <a th:href="@{'/editEntry/' + ${entry.id}}"
+                    style="background-color: #2196F3; color: white; padding: 8px 12px; text-decoration: none; border-radius: 5px;">
+    Bearbeiten ✏️
+            </a>
+
+             <a th:href="@{'/deleteEntry/' + ${entry.id}}"
+   onclick="return confirm('Diesen Tagebucheintrag wirklich löschen?');"
+   style="background-color: #f44336; color: white; padding: 8px 12px; text-decoration: none; border-radius: 5px;">
+    Löschen 🗑️
+</a>
+
+
             </div>
     </div>
 

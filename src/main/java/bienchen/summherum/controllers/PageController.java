@@ -215,6 +215,83 @@ public class PageController {
         return "redirect:/entries";
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+// Eintrag löschen
+    @GetMapping("/deleteEntry/{id}")
+    public String deleteEntry(@PathVariable Long id) {
+        entryRepository.deleteById(id);
+        return "redirect:/entries";
+    }
+
+    // Bearbeitungsseite für Eintrag anzeigen
+    @GetMapping("/editEntry/{id}")
+    public String showEditEntryPage(@PathVariable Long id, Model model) {
+        Entry entry = entryRepository.findById(id).orElseThrow();
+
+        java.time.LocalDate entryDate = entry.getTimestamp()
+                .atZone(java.time.ZoneId.systemDefault())
+                .toLocalDate();
+
+        model.addAttribute("entry", entry);
+        model.addAttribute("entryDate", entryDate);
+        model.addAttribute("journeyListe", journeyRepository.findAll());
+        model.addAttribute("orteListe", travellocationRepository.findAll());
+
+        return "edit-entry";
+    }
+
+    // Bearbeiteten Eintrag speichern
+    @PostMapping("/updateEntry/{id}")
+    public String updateEntry(@PathVariable Long id,
+                              @RequestParam String title,
+                              @RequestParam String text,
+                              @RequestParam java.time.LocalDate date,
+                              @RequestParam Long journeyId,
+                              @RequestParam Long locationId) {
+
+        Entry entry = entryRepository.findById(id).orElseThrow();
+        Journey journey = journeyRepository.findById(journeyId).orElseThrow();
+        Travellocation location = travellocationRepository.findById(locationId).orElseThrow();
+
+        entry.setTitle(title);
+        entry.setText(text);
+        entry.setTimestamp(date.atStartOfDay(java.time.ZoneId.systemDefault()).toInstant());
+        entry.setJourney(journey);
+        entry.setLocation(location);
+
+        entryRepository.save(entry);
+
+        return "redirect:/entries";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // BLOCK G: PACKLISTEN
     @GetMapping("/packinglists")
     public String showPackinglistsPage(Model model) {
